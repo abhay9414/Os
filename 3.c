@@ -1,5 +1,20 @@
 #include<stdio.h>
+#include<semaphore.h>
 #include<pthread.h>
+
+float CPU_UTIL();
+
+void *pro(int * loc)
+{
+printf("thread %d is being executed \n",*loc);
+
+}
+
+int prio(float cpu)
+{
+    return (cpu/2)+60;
+}
+
 float CPU_UTIL()
 {
     long double a[4], b[4], loadavg;
@@ -21,6 +36,7 @@ float CPU_UTIL()
         return loadavg;
 }
 
+
 int main()
 {
   int remain,flag=0,ts;
@@ -40,35 +56,5 @@ int main()
   printf("Enter time slice for os algorithm in c");
   scanf("%d",&ts);
   printf("\n \t Process turnaround time and waiting time \n");
-  for(time=0,i=0;remain!=0;)
-  {
-    if(rt[i]<=ts && rt[i]>0)
-    {
-      time+=rt[i];
-      rt[i]=0;
-      flag=1;
-    }
-    else if(rt[i]>0)
-    {
-      rt[i]-=ts;
-      time+=ts;
-    }
-    if(rt[i]==0 && flag==1)
-    {
-      remain--;
-      printf("P[%d]\t|\t%d\t|\t%d\n",i+1,time-at[i],time-at[i]-bt[i]);
-      sum_wait+=time-at[i]-bt[i];
-      sum_taround+=time-at[i];
-      flag=0;
-    }
-    if(i==n-1)
-      i=0;
-    else if(at[i+1]<=time)
-      i++;
-    else
-      i=0;
-  }
-  printf("\nAvg waiting time program for round robin = %f\n",sum_wait*1.0/n);
-  printf("Avg sum_taround = %f",sum_taround*1.0/n);
-  return 0;
+  
 }
