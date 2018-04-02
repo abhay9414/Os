@@ -4,11 +4,55 @@
 
 float CPU_UTIL();
 
-void *pro(int * loc)
+int bt[10],i,at[10],pr[10];
+void bust_time()
 {
-printf("thread %d is being executed \n",*loc);
-
+	printf("\n   Enter the Bust Time:\n\n");
+	printf("\t PROCESS \t\tBURST_TIME\n\n");
+	
+	for(i=0;i<10;i++)
+	{
+		printf("\t   P%d  \t\t\t  ",i);
+		scanf("%d",&bt[i]);
+	}
+	
 }
+
+void arrival_time()
+{ 
+    system("cls");
+	printf("\n\tEnter the Arrival Time:\n\n");
+	printf("\t PROCESS \t  BURST_TIME \t  ARRIVAL TIME \n\n");
+	
+	for(i=0;i<10;i++)
+	{
+		printf("\t   P%d\t\t    %d   \t   \t  ",i,bt[i]);
+		scanf("%d",&at[i]);
+	}
+	
+}
+
+void priority()
+{ 
+    system("cls");
+	printf("\n\tEnter the Priority:\n\n");
+	printf("\t PROCESS \t  BURST_TIME \t    ARRIVAL TIME \t  PRIORITY\n\n");
+	
+	for(i=0;i<10;i++)
+	{
+		printf("\t   P%d \t \t     %d   \t \t    %d       \t   ",i,bt[i],at[i]);
+		scanf("%d",&pr[i]);
+	}
+	
+}
+
+void *pro(int * loc)
+{ printf("\n\t''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\t");
+printf("\n       \t \tPROCESS %d IS BEING EXECUTED \t\n\n",*loc);
+printf("\t''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\t\n");
+//printf("\t WITH BUST TIME := %d  WITH ARRIVAL TIME := %d\n\n ",bt[*loc],at[*loc]);
+}
+
 
 int prio(float cpu)
 {
