@@ -83,22 +83,37 @@ float CPU_UTIL()
 
 int main()
 {
-  int remain,flag=0,ts;
-  int i,j,n,time;
-  int sum_wait=0,sum_taround=0,at[10],bt[10],rt[10],p[10];
-  printf("Enter input of processes for program for round robin scheduling in c: ");
-  scanf("%d",&n);
-  remain=n;
-  for(i=0;i<n;i++)
-  {
-    printf("Enter priority, arrival time and burst time for Process P%d :",i+1);
-    scanf("%d",&p[i]);
-    scanf("%d",&at[i]);
-    scanf("%d",&bt[i]);
-    rt[i]=p[i];
-  }
-  printf("Enter time slice for os algorithm in c");
-  scanf("%d",&ts);
-  printf("\n \t Process turnaround time and waiting time \n");
-  
+	bust_time();
+	arrival_time();
+	priority();
+	int i,j;
+	system("cls");
+    pthread_t v[10];
+    int priority[10];
+    for(j=0;j<10;j++)
+    {
+
+      int  temp=10000,loc;
+    for(i=0 ;i<10;i++)
+    {
+    priority[i]=prio(CPU_UTIL());
+    
+    if(temp>priority[i])
+    {
+        temp=priority[i];
+        loc=i+1;
+    }
+
+    printf("\n\t%d ||  \t PROCESS %d    || \t PRIORITY %d\n",i+1,i+1,priority[i]);
+    }
+
+    pthread_create(&v[loc],NULL,pro,(void*)&loc);
+
+    pthread_join(v[loc],NULL);
+    
+    }
+
+
+    return 0;
 }
+
