@@ -3,14 +3,14 @@
 #include<pthread.h>
 
 float CPU_UTIL();
-
+int n;
 int bt[10],i,at[10],pr[10];
 void bust_time()
 {
 	printf("\n   Enter the Bust Time:\n\n");
 	printf("\t PROCESS \t\tBURST_TIME\n\n");
 	
-	for(i=0;i<10;i++)
+	for(i=0;i<n;i++)
 	{
 		printf("\t   P%d  \t\t\t  ",i);
 		scanf("%d",&bt[i]);
@@ -24,7 +24,7 @@ void arrival_time()
 	printf("\n\tEnter the Arrival Time:\n\n");
 	printf("\t PROCESS \t  BURST_TIME \t  ARRIVAL TIME \n\n");
 	
-	for(i=0;i<10;i++)
+	for(i=0;i<n;i++)
 	{
 		printf("\t   P%d\t\t    %d   \t   \t  ",i,bt[i]);
 		scanf("%d",&at[i]);
@@ -38,7 +38,7 @@ void priority()
 	printf("\n\tEnter the Priority:\n\n");
 	printf("\t PROCESS \t  BURST_TIME \t    ARRIVAL TIME \t  PRIORITY\n\n");
 	
-	for(i=0;i<10;i++)
+	for(i=0;i<n;i++)
 	{
 		printf("\t   P%d \t \t     %d   \t \t    %d       \t   ",i,bt[i],at[i]);
 		scanf("%d",&pr[i]);
@@ -82,19 +82,25 @@ float CPU_UTIL()
 
 
 int main()
-{
+{ 
+
+printf("\n\tEnter the number of process\t\n");
+scanf("%d",&n);
 	bust_time();
 	arrival_time();
 	priority();
 	int i,j;
+	 
+	 
+	
 	system("cls");
-    pthread_t v[10];
-    int priority[10];
-    for(j=0;j<10;j++)
+    pthread_t v[n];
+    int priority[n];
+    for(j=0;j<n;j++)
     {
 
       int  temp=10000,loc;
-    for(i=0 ;i<10;i++)
+    for(i=0 ;i<n;i++)
     {
     priority[i]=prio(CPU_UTIL());
     
