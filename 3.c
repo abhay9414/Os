@@ -20,7 +20,7 @@ void bust_time()
 
 void arrival_time()
 { 
-    system("cls");
+    system("clear");
 	printf("\n\tEnter the Arrival Time:\n\n");
 	printf("\t PROCESS \t  BURST_TIME \t  ARRIVAL TIME \n\n");
 	
@@ -34,7 +34,7 @@ void arrival_time()
 
 void priority()
 { 
-    system("cls");
+    system("clear");
 	printf("\n\tEnter the Priority:\n\n");
 	printf("\t PROCESS \t  BURST_TIME \t    ARRIVAL TIME \t  PRIORITY\n\n");
 	
@@ -84,16 +84,15 @@ float CPU_UTIL()
 int main()
 { 
 
-printf("\n\tEnter the number of process\t\n");
-scanf("%d",&n);
+printf("\n\tENTER THE NUMBER OF PROCESSES  \t||NUMBER OF PROCESS IS AUTOMATIC TAKEN THAT IS 10\n");
 	bust_time();
 	arrival_time();
 	priority();
 	int i,j;
-	 
+
 	 
 	
-	system("cls");
+	system("clear");
     pthread_t v[n];
     int priority[n];
     for(j=0;j<n;j++)
